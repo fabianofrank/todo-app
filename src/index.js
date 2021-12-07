@@ -2,7 +2,7 @@ import './style.css';
 import more from './more.png';
 import reload from './reload.png';
 import enter from './enter.png';
-import {check} from './status.js';
+import { check } from './status.js';
 
 // Array of Objects
 let items = [

@@ -1,4 +1,4 @@
-export function check(input, item, label, setStored) {
+export default function check(input, item, label, setStored) {
   input.addEventListener('change', () => {
     if (input.checked) {
       item.completed = true;
@@ -14,4 +14,3 @@ export function check(input, item, label, setStored) {
     input.checked = true;
   }
 }
-
