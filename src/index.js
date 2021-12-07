@@ -2,6 +2,7 @@ import './style.css';
 import more from './more.png';
 import reload from './reload.png';
 import enter from './enter.png';
+import {check} from './status.js';
 
 // Array of Objects
 let items = [
@@ -32,19 +33,14 @@ class AddItem {
 }
 
 // Storage
-function setStored() {
-  localStorage.setItem('newItems', JSON.stringify(items));
-}
-
-function getStored() {
-  JSON.parse(localStorage.getItem('newItems'));
-}
+const setStored = () => localStorage.setItem('newItems', JSON.stringify(items));
+const getStored = () => JSON.parse(localStorage.getItem('newItems'));
 
 // Display Function
 const checkList = document.querySelector('.checklist');
 
 function displayList() {
-  const list = getStored();
+  const list = JSON.parse(window.localStorage.getItem('newItems'));
   if (list !== null && list !== undefined) {
     items = list;
   }
@@ -60,16 +56,7 @@ function displayList() {
     container.classList.add('container');
     input.classList.add('checkbox');
     input.setAttribute('type', 'checkbox');
-    if (item.completed === true) {
-      input.checked = true;
-    }
-    input.addEventListener('change', () => {
-      if (input.checked) {
-        item.completed = true;
-      } else {
-        item.completed = false;
-      }
-    });
+    check(input, item, label, setStored);
     const textNode = document.createTextNode(item.description);
     label.appendChild(textNode);
     checkList.appendChild(container);
