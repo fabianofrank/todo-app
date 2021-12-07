@@ -1,4 +1,4 @@
-export default function check(input, item, label, setStored) {
+export function check(input, item, label, setStored) {
   input.addEventListener('change', () => {
     if (input.checked) {
       item.completed = true;
@@ -12,5 +12,6 @@ export default function check(input, item, label, setStored) {
 
   if (item.completed === true) {
     input.checked = true;
+    label.style.textDecoration = 'line-through';
   }
 }
