@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */ 
 export function check(input, item, label, setStored) {
   input.addEventListener('change', () => {
     if (input.checked) {
