@@ -8,7 +8,7 @@ import { check } from './status.js';
 import { addCrud, clearCrud, editCrud, removeCrud } from './crud.js';
 
 // Object Template
-const items = [];
+let items = [];
 class AddItem {
   constructor(description, index) {
     this.description = description;
