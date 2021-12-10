@@ -95,5 +95,5 @@ export {
   setStored,
   displayList,
   checkList,
-  items
+  items,
 };

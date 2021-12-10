@@ -63,5 +63,5 @@ export {
   addCrud,
   removeCrud,
   clearCrud,
-  editCrud
+  editCrud,
 };
