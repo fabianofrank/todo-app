@@ -52,12 +52,12 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 20px;
 }
 
 .form img {
   height: 10px;
   filter: invert(30%);
+  padding-right: 20px;
 }
 
 .form input {
@@ -66,6 +66,7 @@ h1 {
   border: 0;
   font-size: 12px;
   font-style: italic;
+  padding-left: 20px;
 }
 
 .container {
