@@ -1,13 +1,13 @@
-/* eslint-disable import/no-cycle, object-curly-newline */
-import { items, AddItem, setStored, displayList, checkList } from './index.js';
+/* eslint-disable import/no-cycle */
+import {
+  items, AddItem, setStored, displayList, checkList
+} from './index.js';
 
 const addCrud = () => {
   const addEnter = document.querySelector('.add-enter');
   addEnter.addEventListener('keyup', ({ key }) => {
     if (key === 'Enter' && addEnter.value !== '') {
-      const newEntry = new AddItem();
-      newEntry.description = addEnter.value;
-      newEntry.index = items.length;
+      const newEntry = new AddItem(addEnter.value, items.length);
       items.push(newEntry);
       addEnter.value = '';
       checkList.innerHTML = '';
@@ -19,12 +19,12 @@ const addCrud = () => {
 
 const removeCrud = (trashIcon) => {
   trashIcon.addEventListener('click', () => {
-    items.forEach((item, index) => {
-      if (item.completed === true) {
-        items.splice(index, 1);
-      }
-    });
-    setStored();
+    const filtered = items.filter((item) => item.id != trashIcon.id);
+    filtered.forEach((item, i) => {
+      item.index = i;
+      item.id = `item-${i}`
+    })
+    localStorage.setItem('newItems', JSON.stringify(filtered));
     displayList();
   });
 };
@@ -33,8 +33,11 @@ const clearCrud = () => {
   const clearBtn = document.querySelector('.button');
   clearBtn.addEventListener('click', () => {
     const filtered = items.filter((item) => (item.completed !== true));
-    const setStored = () => localStorage.setItem('newItems', JSON.stringify(filtered));
-    setStored();
+    filtered.forEach((item, i) => {
+      item.index = i;
+      item.id = `item-${i}`
+    })
+    localStorage.setItem('newItems', JSON.stringify(filtered));
     displayList();
   });
 };

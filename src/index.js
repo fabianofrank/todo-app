@@ -1,11 +1,13 @@
-/* eslint-disable import/no-cycle, object-curly-newline, import/no-mutable-exports */
+/* eslint-disable import/no-cycle */
 import './style.css';
 import more from './more.png';
 import trash from './trash.png';
 import reload from './reload.png';
 import enter from './enter.png';
 import { check } from './status.js';
-import { addCrud, clearCrud, editCrud, removeCrud } from './crud.js';
+import {
+  addCrud, clearCrud, editCrud, removeCrud
+} from './crud.js';
 
 // Object Template
 let items = [];
@@ -14,13 +16,13 @@ class AddItem {
     this.description = description;
     this.completed = false;
     this.index = index;
+    this.id = `item-${this.index}`;
   }
 }
 
 // Storage
 const setStored = () => localStorage.setItem('newItems', JSON.stringify(items));
 const getStored = () => JSON.parse(window.localStorage.getItem('newItems'));
-// const removeStored = () => localStorage.removeItem('');
 
 // Display Task
 const checkList = document.querySelector('.checklist');
@@ -31,7 +33,8 @@ function displayList() {
   }
   const oldList = document.querySelectorAll('.container');
   [...oldList].forEach((e) => e.remove());
-  items.forEach((item) => {
+  items.forEach((item, i) => {
+    items[i].index = i;
     const container = document.createElement('div');
     const input = document.createElement('input');
     const label = document.createElement('label');
@@ -46,6 +49,7 @@ function displayList() {
     container.classList.add('container');
     input.classList.add('checkbox');
     label.classList.add('edit');
+    trashIcon.id = item.id;
     input.setAttribute('type', 'checkbox');
     label.setAttribute('contenteditable', 'true');
     const textNode = document.createTextNode(item.description);
