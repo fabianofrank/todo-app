@@ -8,13 +8,7 @@ import { check } from './status.js';
 import { addCrud, clearCrud, editCrud, removeCrud } from './crud.js';
 
 // Object Template
-class CreateTask {
-  constructor() {
-    this.items = [];
-  }
-}
-
-const newTask = new CreateTask();
+let items = [];
 class AddItem {
   constructor(description, index) {
     this.description = description;
@@ -24,7 +18,7 @@ class AddItem {
 }
 
 // Storage
-const setStored = () => localStorage.setItem('newItems', JSON.stringify(newTask.items));
+const setStored = () => localStorage.setItem('newItems', JSON.stringify(items));
 const getStored = () => JSON.parse(window.localStorage.getItem('newItems'));
 // const removeStored = () => localStorage.removeItem('');
 
@@ -33,11 +27,11 @@ const checkList = document.querySelector('.checklist');
 function displayList() {
   const list = getStored();
   if (list !== null && list !== undefined) {
-    newTask.items = list;
+    items = list;
   }
   const oldList = document.querySelectorAll('.container');
   [...oldList].forEach((e) => e.remove());
-  newTask.items.forEach((item) => {
+  items.forEach((item) => {
     const container = document.createElement('div');
     const input = document.createElement('input');
     const label = document.createElement('label');
@@ -88,4 +82,4 @@ window.addEventListener('load', () => {
   displayList();
 });
 
-export { newTask, CreateTask, AddItem, getStored, setStored, displayList, checkList }
+export { AddItem, getStored, setStored, displayList, checkList, items };
