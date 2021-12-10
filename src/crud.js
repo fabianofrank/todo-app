@@ -1,4 +1,5 @@
-import { newTask, AddItem, setStored, displayList, checkList, getStored} from './index.js';
+/* eslint-disable import/no-cycle, object-curly-newline */
+import { newTask, AddItem, setStored, displayList, checkList } from './index.js';
 
 const addCrud = () => {
   const addEnter = document.querySelector('.add-enter');
@@ -14,7 +15,7 @@ const addCrud = () => {
       displayList();
     }
   });
-}
+};
 
 const removeCrud = (trashIcon) => {
   trashIcon.addEventListener('click', () => {
@@ -25,8 +26,8 @@ const removeCrud = (trashIcon) => {
     });
     setStored();
     displayList();
-  })
-}
+  });
+};
 
 const clearCrud = () => {
   const clearBtn = document.querySelector('.button');
@@ -36,12 +37,11 @@ const clearCrud = () => {
     setStored();
     displayList();
   });
-}
+};
 
 const editCrud = () => {
   const editable = document.querySelectorAll('.edit');
   for (let i = 0; i < editable.length; i++) {
-    console.log(newTask.items[i].description)
     editable[i].addEventListener('keyup', ({ key }) => {
       if (key === 'Enter' && editable[i].value !== '') {
         newTask.items[i].description = editable[i].textContent;
@@ -50,6 +50,6 @@ const editCrud = () => {
       }
     });
   }
-}
+};
 
 export { addCrud, removeCrud, clearCrud, editCrud };

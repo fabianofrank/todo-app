@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle, object-curly-newline */
 import './style.css';
 import more from './more.png';
 import trash from './trash.png';
@@ -52,7 +53,7 @@ function displayList() {
     input.classList.add('checkbox');
     label.classList.add('edit');
     input.setAttribute('type', 'checkbox');
-    label.setAttribute('contenteditable', 'true')
+    label.setAttribute('contenteditable', 'true');
     const textNode = document.createTextNode(item.description);
     label.appendChild(textNode);
     checkList.appendChild(container);
@@ -62,7 +63,6 @@ function displayList() {
     getStored();
   });
 }
-console.log(newTask.items.description)
 
 // Display Input
 const form = document.querySelector('.form');
@@ -83,7 +83,6 @@ reloadIcon.src = reload;
 // CRUD
 addCrud();
 clearCrud();
-
 
 window.addEventListener('load', () => {
   displayList();
