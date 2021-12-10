@@ -1,6 +1,10 @@
 /* eslint-disable import/no-cycle */
 import {
-  items, AddItem, setStored, displayList, checkList
+  items,
+  AddItem,
+  setStored,
+  displayList,
+  checkList,
 } from './index.js';
 
 const addCrud = () => {
@@ -19,11 +23,11 @@ const addCrud = () => {
 
 const removeCrud = (trashIcon) => {
   trashIcon.addEventListener('click', () => {
-    const filtered = items.filter((item) => item.id != trashIcon.id);
+    const filtered = items.filter((item) => item.id !== trashIcon.id);
     filtered.forEach((item, i) => {
       item.index = i;
-      item.id = `item-${i}`
-    })
+      item.id = `item-${i}`;
+    });
     localStorage.setItem('newItems', JSON.stringify(filtered));
     displayList();
   });
@@ -35,8 +39,8 @@ const clearCrud = () => {
     const filtered = items.filter((item) => (item.completed !== true));
     filtered.forEach((item, i) => {
       item.index = i;
-      item.id = `item-${i}`
-    })
+      item.id = `item-${i}`;
+    });
     localStorage.setItem('newItems', JSON.stringify(filtered));
     displayList();
   });
@@ -55,4 +59,9 @@ const editCrud = () => {
   }
 };
 
-export { addCrud, removeCrud, clearCrud, editCrud };
+export {
+  addCrud,
+  removeCrud,
+  clearCrud,
+  editCrud
+};

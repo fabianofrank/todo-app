@@ -1,4 +1,4 @@
-/* eslint-disable import/no-cycle */
+/* eslint-disable import/no-cycle, import/no-mutable-exports */
 import './style.css';
 import more from './more.png';
 import trash from './trash.png';
@@ -6,7 +6,10 @@ import reload from './reload.png';
 import enter from './enter.png';
 import { check } from './status.js';
 import {
-  addCrud, clearCrud, editCrud, removeCrud
+  addCrud,
+  clearCrud,
+  editCrud,
+  removeCrud,
 } from './crud.js';
 
 // Object Template
@@ -86,4 +89,11 @@ window.addEventListener('load', () => {
   displayList();
 });
 
-export { AddItem, getStored, setStored, displayList, checkList, items };
+export {
+  AddItem,
+  getStored,
+  setStored,
+  displayList,
+  checkList,
+  items
+};
