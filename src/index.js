@@ -1,29 +1,19 @@
 import './style.css';
 import more from './more.png';
+import trash from './trash.png';
 import reload from './reload.png';
 import enter from './enter.png';
 import { check } from './status.js';
+import { addCrud, clearCrud, editCrud, removeCrud } from './crud.js';
 
-// Array of Objects
-let items = [
-  {
-    description: 'Do something 1',
-    completed: false,
-    index: 0,
-  },
-  {
-    description: 'Do something 2',
-    completed: false,
-    index: 1,
-  },
-  {
-    description: 'Do something 3',
-    completed: false,
-    index: 2,
-  },
-];
+// Object Template
+class CreateTask {
+  constructor() {
+    this.items = [];
+  }
+}
 
-// Add Object
+const newTask = new CreateTask();
 class AddItem {
   constructor(description, index) {
     this.description = description;
@@ -33,38 +23,48 @@ class AddItem {
 }
 
 // Storage
-const setStored = () => localStorage.setItem('newItems', JSON.stringify(items));
-const getStored = () => JSON.parse(localStorage.getItem('newItems'));
+const setStored = () => localStorage.setItem('newItems', JSON.stringify(newTask.items));
+const getStored = () => JSON.parse(window.localStorage.getItem('newItems'));
+// const removeStored = () => localStorage.removeItem('');
 
-// Display Function
+// Display Task
 const checkList = document.querySelector('.checklist');
-
 function displayList() {
-  const list = JSON.parse(window.localStorage.getItem('newItems'));
+  const list = getStored();
   if (list !== null && list !== undefined) {
-    items = list;
+    newTask.items = list;
   }
-  items.forEach((item) => {
+  const oldList = document.querySelectorAll('.container');
+  [...oldList].forEach((e) => e.remove());
+  newTask.items.forEach((item) => {
     const container = document.createElement('div');
     const input = document.createElement('input');
     const label = document.createElement('label');
-    const icon = document.createElement('img');
-    icon.src = more;
+    const moreIcon = document.createElement('img');
+    moreIcon.src = more;
+    const trashIcon = document.createElement('img');
+    trashIcon.src = trash;
     container.appendChild(input);
     container.appendChild(label);
-    container.appendChild(icon);
+    container.appendChild(moreIcon);
+    container.appendChild(trashIcon);
     container.classList.add('container');
     input.classList.add('checkbox');
+    label.classList.add('edit');
     input.setAttribute('type', 'checkbox');
-    check(input, item, label, setStored);
+    label.setAttribute('contenteditable', 'true')
     const textNode = document.createTextNode(item.description);
     label.appendChild(textNode);
     checkList.appendChild(container);
+    check(input, item, label, setStored, trashIcon, moreIcon);
+    editCrud();
+    removeCrud(trashIcon);
     getStored();
   });
 }
+console.log(newTask.items.description)
 
-// Enter Input
+// Display Input
 const form = document.querySelector('.form');
 const formInput = document.createElement('input');
 formInput.classList.add('add-enter');
@@ -80,21 +80,13 @@ const head = document.querySelector('.head');
 head.appendChild(reloadIcon);
 reloadIcon.src = reload;
 
-// Enter Event
-const addEnter = document.querySelector('.add-enter');
-addEnter.addEventListener('keyup', ({ key }) => {
-  if (key === 'Enter' && addEnter.value !== '') {
-    const newEntry = new AddItem();
-    newEntry.description = addEnter.value;
-    newEntry.index = items.length;
-    items.push(newEntry);
-    addEnter.value = '';
-    checkList.innerHTML = '';
-    setStored();
-    displayList();
-  }
-});
+// CRUD
+addCrud();
+clearCrud();
+
 
 window.addEventListener('load', () => {
   displayList();
 });
+
+export { newTask, CreateTask, AddItem, getStored, setStored, displayList, checkList }
