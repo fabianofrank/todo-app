@@ -1,4 +1,4 @@
-/* eslint-disable import/no-cycle, object-curly-newline */
+/* eslint-disable import/no-cycle, object-curly-newline, import/no-mutable-exports */
 import './style.css';
 import more from './more.png';
 import trash from './trash.png';
