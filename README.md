@@ -5,7 +5,7 @@
 This project is a implementation of a functional To-Do List that aims to demonstrante my abilities with JS manipulation.
 
 ## Demo
-Get the live link [here](https://fabianofrank.github.io/todolist/)
+Get the live link [here](https://fabianofrank.github.io/todo-app/)
 
 ## Built With
 
