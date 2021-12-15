@@ -1,18 +1,4 @@
-
-let items = [];
-
-class AddItem {
-  constructor(description, index) {
-    this.description = description;
-    this.completed = false;
-    this.index = index;
-    this.id = `item-${this.index}`;
-  }
-}
-
 const setStored = () => localStorage.setItem('newItems', JSON.stringify(items));
-
-const checkList = document.querySelector('.checklist');
 
 const addCrud = () => {
   const addEnter = document.querySelector('.add-enter');
@@ -27,6 +13,15 @@ const addCrud = () => {
     }
   });
 };
+
+class AddItem {
+  constructor(description, index) {
+    this.description = description;
+    this.completed = false;
+    this.index = index;
+    this.id = `item-${this.index}`;
+  }
+}
 
 const removeCrud = (trashIcon) => {
   trashIcon.addEventListener('click', () => {
