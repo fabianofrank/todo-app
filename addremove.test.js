@@ -1,20 +1,21 @@
-import { addCrud, removeCrud } from "./addremove";
+import { items, addItem, removeItem } from "./__mock__/index";
 
-test('increases items by one', () => {
-  document.body.innerHTML = '<div class="checklist"></div>';
-  let items = [
-    { description: 'something 1',
-      completed: false,
-      index: 0,
-      id: `item-0`,
-    },
-    { description: 'something 2',
-      completed: true,
-      index: 1,
-      id: `item-1`,
-    },
-  ];
-  addCrud()
-  expect(items.length).toBe(3);
+describe('Adding and removing functions', () => {
+  test('increases items by one', () => {
+    const item = {
+      description: '',
+      index: 2
+    }
+    addItem(item);
+    expect(items.length).toEqual(3);
+  })
+
+  test('removes items by one', () => {
+    const item = {
+      description: '',
+      index: 2
+    }
+    removeItem(item);
+    expect(items.length).toEqual(2);
+  })
 })
-
