@@ -32,6 +32,8 @@ const removeItem = () => {
   return filtered;
 };
 
+const localStorage = {};
+
 export {
   items,
   addItem,
