@@ -3,7 +3,7 @@ import { items, addItem, removeItem } from './__mock__/index.js';
 describe('Adding and removing functions', () => {
   test('increases items by one', () => {
     const item = {
-      description: '',
+      description: 'something 3',
       index: 2,
     };
     addItem(item);
@@ -12,7 +12,7 @@ describe('Adding and removing functions', () => {
 
   test('removes items by one', () => {
     const item = {
-      description: '',
+      description: 'something 3',
       index: 2,
     };
     removeItem(item);

@@ -13,6 +13,8 @@ const items = [
   },
 ];
 
+const input = 'something 4'
+
 class AddItem {
   constructor(description, index) {
     this.description = description;
@@ -32,11 +34,21 @@ const removeItem = () => {
   return filtered;
 };
 
-const localStorage = {};
+const editItem = (item) => {
+    item.description = input;
+};
+
+// const clearItem = () => {
+  
+// };
+
+// const localStorage = {};
 
 export {
   items,
   addItem,
   removeItem,
+  editItem,
   AddItem,
+  input,
 };

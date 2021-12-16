@@ -1,16 +1,22 @@
-import { editCrud, clearCrud } from './editclear.js';
+import { editCrud, clearCrud, check } from './editclear.js';
+import { addItem, editItem, input } from './__mock__/index.js';
 
 describe('editing and clearing functions', () => {
   test('edits text', () => {
-  
-  });
-
-  test('clears checked items', () => {
     const item = {
-      description: '',
+      description: 'something 3',
       index: 2,
     };
-    removeItem(item);
-    expect(items.length).toEqual(2);
+    addItem(item);
+    editItem(item);
+    expect(item.description).toBe(input);
   });
+
+  // test('clears checked items', () => {
+    
+  // });
+
+  // test('check completed items', () => {
+    
+  // });
 });
