@@ -13,7 +13,7 @@ let items = [
   },
 ];
 
-const input = 'something 4'
+const input = 'something 4';
 
 class AddItem {
   constructor(description, index) {
@@ -35,7 +35,7 @@ const removeItem = () => {
 };
 
 const editItem = (item) => {
-    item.description = input;
+  item.description = input;
 };
 
 const checkItem = (item) => {
@@ -64,7 +64,7 @@ class LocalStorageMock {
   }
 }
 
-global.localStorage = new LocalStorageMock;
+global.localStorage = new LocalStorageMock();
 
 const setStored = () => localStorage.setItem('newItems', JSON.stringify(items));
 const getStored = () => JSON.parse(localStorage.getItem('newItems'));
@@ -72,8 +72,8 @@ const getStored = () => JSON.parse(localStorage.getItem('newItems'));
 const clearItems = (items) => {
   const filtered = items.filter((item) => (item.completed !== true));
   setStored('newItems', filtered);
-  return items = getStored();
- };
+  items = getStored();
+};
 
 export {
   items,

@@ -1,3 +1,7 @@
+/* eslint-disable no-loop-func */
+import { items } from './__mock__/index.js';
+import { displayList, setStored } from './src/index.js';
+
 const clearCrud = () => {
   const clearBtn = document.querySelector('.button');
   clearBtn.addEventListener('click', () => {

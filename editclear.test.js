@@ -1,5 +1,11 @@
-import { editCrud, clearCrud, check } from './editclear.js';
-import { addItem, editItem, input, checkItem, items, clearItems } from './__mock__/index.js';
+import { check } from './editclear.js';
+import {
+  editItem,
+  input,
+  checkItem,
+  items,
+  clearItems
+} from './__mock__/index.js';
 
 describe('editing and clearing functions', () => {
   test('edits text', () => {
