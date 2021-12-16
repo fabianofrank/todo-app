@@ -1,3 +1,4 @@
+/* eslint-disable, max-classes-per-file, prefer-const */
 let items = [
   {
     description: 'something 1',

@@ -1,10 +1,9 @@
-import { check } from './editclear.js';
 import {
   editItem,
   input,
   checkItem,
   items,
-  clearItems
+  clearItems,
 } from './__mock__/index.js';
 
 describe('editing and clearing functions', () => {
@@ -29,6 +28,6 @@ describe('editing and clearing functions', () => {
 
   test('clears checked items', () => {
     clearItems(items);
-    expect(items.length).toBe(1)
+    expect(items.length).toBe(1);
   });
 });
