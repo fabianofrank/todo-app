@@ -1,4 +1,4 @@
-/* eslint-disable, max-classes-per-file, prefer-const */
+/* eslint-disable import/no-mutable-exports, max-classes-per-file, prefer-const */
 let items = [
   {
     description: 'something 1',
