@@ -27,7 +27,7 @@ const addItem = (elem) => {
   items.push(item);
 };
 
-const removeItem = (elem) => {
+const removeItem = () => {
   const filtered = items.pop();
   return filtered;
 };
