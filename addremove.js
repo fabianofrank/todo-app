@@ -1,5 +1,5 @@
-import { items, addItem, removeItem } from './__mock__/index.js';
-import { setStored, displayList,} from './index.js';
+import { items, AddItem } from './__mock__/index.js';
+import { setStored, displayList, checkList } from './index';
 
 const addCrud = () => {
   const addEnter = document.querySelector('.add-enter');
