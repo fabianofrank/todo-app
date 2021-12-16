@@ -38,6 +38,10 @@ const editItem = (item) => {
     item.description = input;
 };
 
+const checkItem = (item) => {
+  item.completed = !item.completed;
+};
+
 // const clearItem = () => {
   
 // };
@@ -51,4 +55,5 @@ export {
   editItem,
   AddItem,
   input,
+  checkItem,
 };

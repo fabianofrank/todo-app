@@ -1,5 +1,5 @@
 import { editCrud, clearCrud, check } from './editclear.js';
-import { addItem, editItem, input } from './__mock__/index.js';
+import { addItem, editItem, input, checkItem } from './__mock__/index.js';
 
 describe('editing and clearing functions', () => {
   test('edits text', () => {
@@ -16,7 +16,14 @@ describe('editing and clearing functions', () => {
     
   // });
 
-  // test('check completed items', () => {
-    
-  // });
+  test('check completed items', () => {
+    const item = {
+      description: 'something 3',
+      index: 2,
+      completed: true,
+    };
+    addItem(item);
+    checkItem(item);
+    expect(item.completed).toBeFalsy();
+  });
 });
