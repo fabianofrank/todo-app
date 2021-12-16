@@ -33,8 +33,8 @@ const removeItem = () => {
 };
 
 export { 
-  items, 
-  addItem, 
-  removeItem, 
-  AddItem
+  items,
+  addItem,
+  removeItem,
+  AddItem,
 };
