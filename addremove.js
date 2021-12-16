@@ -1,3 +1,6 @@
+import { items, addItem, removeItem } from './__mock__/index.js';
+import { setStored, displayList,} from './index.js';
+
 const addCrud = () => {
   const addEnter = document.querySelector('.add-enter');
   addEnter.addEventListener('keyup', ({ key }) => {
@@ -24,4 +27,4 @@ const removeCrud = (trashIcon) => {
   });
 };
 
-export { addCrud, removeCrud }
+export { addCrud, removeCrud };
