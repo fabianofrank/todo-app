@@ -1,4 +1,4 @@
-const items = [
+let items = [
   {
     description: 'something 1',
     completed: false,
@@ -42,9 +42,10 @@ const checkItem = (item) => {
   item.completed = !item.completed;
 };
 
-// const clearItem = () => {
-  
-// };
+const clearItems = (items) => {
+  const filteredItems = items.filter((item) => (item.completed !== true));
+  items = filteredItems;
+ };
 
 // const localStorage = {};
 
@@ -56,4 +57,5 @@ export {
   AddItem,
   input,
   checkItem,
+  clearItems,
 };
