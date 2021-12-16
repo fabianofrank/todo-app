@@ -32,7 +32,7 @@ const removeItem = () => {
   return filtered;
 };
 
-export { 
+export {
   items,
   addItem,
   removeItem,
