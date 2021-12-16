@@ -42,12 +42,33 @@ const checkItem = (item) => {
   item.completed = !item.completed;
 };
 
-const clearItems = (items) => {
-  const filteredItems = items.filter((item) => (item.completed !== true));
-  items = filteredItems;
- };
+const localStorage = (function() {
+  var store = {};
+  return {
+    getItem: function(key) {
+      return store[key];
+    },
+    setItem: function(key, value) {
+      store[key] = value.toString();
+    },
+    clear: function() {
+      store = {};
+    },
+    removeItem: function(key) {
+      delete store[key];
+    }
+  };
+})();
 
-// const localStorage = {};
+// Object.defineProperty(window, 'localStorage', { value: localStorageMock });
+const setStored = () => localStorage.setItem('newItems', JSON.stringify(items));
+const getStored = () => JSON.parse(localStorage.getItem('newItems'));
+
+const clearItems = (items) => {
+  const filtered = items.filter((item) => (item.completed !== true));
+  setStored('newItems', filtered);
+  return items = getStored();
+ };
 
 export {
   items,
