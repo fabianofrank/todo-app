@@ -1,3 +1,4 @@
+import { setStored } from './src/index.js';
 import {
   editItem,
   input,
@@ -27,7 +28,7 @@ describe('editing and clearing functions', () => {
   });
 
   test('clears checked items', () => {
-    clearItems(items);
-    expect(items.length).toBe(1);
+    const returned_items = clearItems(items);
+    expect(returned_items.length).toBe(1);
   });
 });

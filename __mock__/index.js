@@ -67,14 +67,15 @@ class LocalStorageMock {
 
 global.localStorage = new LocalStorageMock();
 
-const setStored = () => localStorage.setItem('newItems', JSON.stringify(items));
-const getStored = () => JSON.parse(localStorage.getItem('newItems'));
+const setStored = () => global.localStorage.setItem('newItems', JSON.stringify(items));
+const getStored = () => JSON.parse(global.localStorage.getItem('newItems'));
 
 const clearItems = (items) => {
-  const filtered = items.filter((item) => (item.completed !== true));
-  setStored('newItems', filtered);
+  const filtered = items.filter((item) => (!item.completed));
+  setStored(filtered);
   items = getStored();
-};
+  return items;
+}; 
 
 export {
   items,
