@@ -1,4 +1,3 @@
-import { setStored } from './src/index.js';
 import {
   editItem,
   input,

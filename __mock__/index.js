@@ -67,7 +67,7 @@ class LocalStorageMock {
 
 global.localStorage = new LocalStorageMock();
 
-const setStored = () => global.localStorage.setItem('newItems', JSON.stringify(items));
+const setStored = (items) => global.localStorage.setItem('newItems', JSON.stringify(items));
 const getStored = () => JSON.parse(global.localStorage.getItem('newItems'));
 
 const clearItems = (items) => {
