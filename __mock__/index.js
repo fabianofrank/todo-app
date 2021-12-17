@@ -75,7 +75,7 @@ const clearItems = (items) => {
   setStored(filtered);
   items = getStored();
   return items;
-}; 
+};
 
 export {
   items,

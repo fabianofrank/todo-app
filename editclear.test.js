@@ -27,7 +27,7 @@ describe('editing and clearing functions', () => {
   });
 
   test('clears checked items', () => {
-    const returned_items = clearItems(items);
-    expect(returned_items.length).toBe(1);
+    const returnedItems = clearItems(items);
+    expect(returnedItems.length).toBe(1);
   });
 });
